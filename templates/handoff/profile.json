@@ -1,0 +1,23 @@
+{
+  "id": "handoff",
+  "title": "Project Handoff Report",
+  "description": "Engineering handoff report connecting architecture, interfaces, runtime state, deployment, known issues, and evidence.",
+  "sections": [
+    "Executive Summary",
+    "Architecture",
+    "Interfaces and Data Flow",
+    "Deployment",
+    "Configuration",
+    "Operation",
+    "Diagnostics",
+    "Known Issues",
+    "Verification Evidence",
+    "Ownership and Next Steps"
+  ],
+  "emphasis": [
+    "architecture",
+    "interfaces",
+    "deployment reproducibility",
+    "known risks"
+  ]
+}

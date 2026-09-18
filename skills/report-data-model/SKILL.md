@@ -37,4 +37,4 @@ Do not duplicate the source URL inside every requirement or copy requirement tex
 6. Validate referential integrity.
 7. Add migration/versioning when changing persisted schema.
 
-Prefer file-per-entity for small/medium Git-managed reports because it produces small diffs and low merge conflict.
+Prefer file-per-entity for small/medium Git-managed reports because it produces small diffs and low merge conflict. JSON and YAML are supported canonical authoring formats; both must satisfy the same JSON Schema and semantic relationship rules.

@@ -20,8 +20,8 @@ features:
     details: Follow input to output and calculate downstream impact before changing report data.
   - title: Diagram-as-Code
     details: Architecture, flows and relationships are maintained as Mermaid source, not disconnected drawings.
-  - title: Deterministic Validation
-    details: Broken references, missing evidence, duplicate IDs and inconsistent relationships block generation.
+  - title: Schema + Semantic Validation
+    details: JSON Schema validates JSON/YAML structure; graph checks block broken references, missing evidence, duplicate IDs and inconsistent relationships.
   - title: Renderer Independent
     details: VitePress is the first renderer; the canonical model is designed to support Quarto, Observable and presentation adapters.
   - title: Agent Skills
@@ -44,9 +44,8 @@ flowchart LR
 ## Start locally
 
 ```bash
-npm install
-npm run report:check
-npm run report:generate
+./scripts/bootstrap.sh
+npm run report:inspect
 npm run docs:dev
 ```
 

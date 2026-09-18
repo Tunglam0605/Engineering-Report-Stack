@@ -35,12 +35,16 @@ The WebUI is a projection of canonical engineering data, not the place where eng
 ```text
 Engineering-Report-Stack/
 ├── .codex-plugin/         # Codex/OpenAI plugin manifest
+├── report_engine/         # SRP core: IO, schema, graph, validation, renderers
 ├── skills/                # Portable Agent Skills
-├── schemas/               # Canonical JSON Schema contracts
+├── schemas/               # JSON Schema 2020-12 contracts
+├── templates/             # compliance / validation / test / handoff profiles
+├── prompts/               # ChatGPT bootstrap and migration/review prompts
 ├── references/            # Framework catalogue and engineering rules
-├── tools/                 # Deterministic CLI: validate/trace/impact/generate
+├── tools/                 # Thin CLI + report scaffolder
 ├── examples/              # Working report examples
-├── web/                   # VitePress report shell
+├── tests/                 # Core / schema / graph / skill integration tests
+├── web/                   # VitePress + reusable Vue components
 ├── ARCHITECTURE.md
 ├── AGENTS.md
 └── package.json
@@ -54,11 +58,11 @@ Requirements: Node.js 18+ and Python 3.10+.
 git clone https://github.com/Tunglam0605/Engineering-Report-Stack.git
 cd Engineering-Report-Stack
 
-npm install
-npm run report:check
-npm run report:generate
+./scripts/bootstrap.sh
 npm run docs:dev
 ```
+
+`bootstrap.sh` creates a local `.venv`, installs the Python SDK and JSON Schema/YAML dependencies, installs WebUI dependencies, runs tests, validates the demo, and builds the site.
 
 The demo report uses:
 
@@ -70,22 +74,29 @@ Source
               └─ Evidence
 ```
 
-Create a new report project:
+Create a new report project (YAML is the default authoring format):
 
 ```bash
-python3 tools/new_report.py ../My-Engineering-Report \
+.venv/bin/python tools/new_report.py ../My-Engineering-Report \
   --id RPT-MY-PROJECT \
-  --name "My Engineering Report"
+  --name "My Engineering Report" \
+  --template compliance
 ```
+
+Templates: `compliance`, `validation`, `test`, `handoff`.
 
 Useful commands:
 
 ```bash
-python3 tools/report_cli.py validate examples/demo-report
-python3 tools/report_cli.py trace examples/demo-report REQ-EMC-001
-python3 tools/report_cli.py impact examples/demo-report STD-DEMO-001
-python3 tools/report_cli.py generate examples/demo-report web/generated/demo-report.md
+npm run report:inspect
+npm run report:check
+npm run report:trace
+npm run report:impact
+npm run report:generate
+npm run docs:build
 ```
+
+The generator emits both Markdown and a renderer-facing JSON view model. The WebUI provides reusable summary, status, evidence and searchable entity components without moving canonical engineering facts into Vue code.
 
 ## Renderer strategy
 
@@ -106,7 +117,9 @@ The OpenAI plugin manifest is in `.codex-plugin/plugin.json`.
 
 ## Status
 
-**v0.1 bootstrap:** canonical model, relationship validation, trace/impact CLI, VitePress shell, Mermaid diagrams, Agent Skills, and a working demo.
+**v0.2 Engineering Report SDK:** JSON/YAML canonical authoring, JSON Schema validation, SRP core package, trace/impact/inspect tooling, interactive VitePress components, generated view model, report templates, CI and Agent Skills are operational.
+
+For a new ChatGPT conversation, use `prompts/chatgpt-bootstrap.md` until the repository is distributed as a native ChatGPT plugin/app.
 
 See [ARCHITECTURE.md](ARCHITECTURE.md) and [ROADMAP.md](ROADMAP.md).
 

@@ -9,14 +9,14 @@ Treat the report as an engineering information system, not as hand-edited HTML.
 
 ## Required workflow
 
-1. Inspect the project and identify the canonical source of truth.
+1. Run `engineering-report inspect <report-root>` when the SDK is available, then identify the canonical source of truth.
 2. Map the affected section tree and data dependencies.
-3. Run or construct trace/impact analysis before editing existing entities.
+3. Run `trace` / `impact` (or construct the equivalent analysis) before editing existing entities.
 4. State inputs, outputs, and affected views/components.
 5. Change canonical data or reusable rendering code.
 6. Never patch generated output when a canonical source exists.
-7. Validate IDs, relationships, source locators, evidence paths, and statuses.
-8. Regenerate derived content.
+7. Run JSON Schema validation plus semantic checks for IDs, relationships, source locators, evidence paths, and statuses.
+8. Regenerate Markdown and the renderer-facing view model.
 9. Build the WebUI.
 10. Review content, diagrams, citations, evidence, and regressions.
 

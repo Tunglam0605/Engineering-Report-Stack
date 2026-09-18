@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools>=75"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "engineering-report-stack"
+version = "0.2.0"
+description = "Report-as-Code engine for traceable engineering WebUI reports"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "Apache-2.0" }
+authors = [
+  { name = "Tunglam0605" }
+]
+dependencies = [
+  "jsonschema>=4.23,<5",
+  "PyYAML>=6.0,<7"
+]
+
+[project.scripts]
+engineering-report = "report_engine.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["report_engine*"]

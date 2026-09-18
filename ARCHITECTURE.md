@@ -41,7 +41,7 @@ The domain model must not depend on VitePress, Quarto, Vue, React, a database, o
 
 ## 4. Canonical entities
 
-The v0.1 domain uses five primary entity types:
+The core domain uses five primary entity types:
 
 | Entity | Stable ID prefix | Purpose |
 |---|---|---|
@@ -80,7 +80,7 @@ Additional entity types can be added later without coupling them to the renderer
 
 ```text
 my-report/
-├── report.json
+├── report.yaml            # report.json is also supported
 ├── data/
 │   ├── sources/
 │   ├── requirements/
@@ -93,7 +93,7 @@ my-report/
     └── measurements/
 ```
 
-Each entity is one JSON file in v0.1. File-per-entity keeps diffs small and supports independent additions/removals.
+Each entity is one JSON or YAML document. File-per-entity keeps diffs small, supports independent additions/removals, and lets teams choose JSON for machine-oriented workflows or YAML for human authoring.
 
 ## 7. Read path
 
@@ -105,13 +105,13 @@ sequenceDiagram
   participant G as Relationship Graph
   participant R as Renderer
 
-  CLI->>FS: scan data/*/*.json
+  CLI->>FS: scan JSON/YAML canonical documents
   FS-->>CLI: raw entities
-  CLI->>DM: normalize + validate structure
-  DM->>G: resolve ID references
+  CLI->>DM: parse + JSON Schema validate
+  DM->>G: resolve ID references + graph invariants
   G-->>CLI: graph + diagnostics
-  CLI->>R: validated model
-  R-->>FS: generated Markdown
+  CLI->>R: renderer-neutral validated model
+  R-->>FS: generated Markdown + JSON view model
 ```
 
 ## 8. Change path
@@ -148,7 +148,23 @@ Canonical Model
 └── SlidevRenderer
 ```
 
-## 10. Long-term design constraints
+## 10. v0.2 module boundaries
+
+```text
+report_engine/
+├── io.py                  # JSON/YAML input adapter
+├── model.py               # canonical runtime types only
+├── schema_validation.py   # JSON Schema 2020-12 validation
+├── graph.py               # relationships, trace and impact semantics
+├── validation.py          # validation orchestration + evidence paths
+├── cli.py                 # use-case boundary / commands
+└── renderers/
+    └── vitepress.py       # VitePress Markdown + view-model adapter
+```
+
+Dependency direction is intentional: input parsing, schema validation, graph semantics, and rendering are separate responsibilities. Vue components consume the generated view model and never become canonical data owners.
+
+## 11. Long-term design constraints
 
 - Prefer deterministic scripts over agent-written repetitive transformations.
 - Keep schemas backward compatible or version them explicitly.

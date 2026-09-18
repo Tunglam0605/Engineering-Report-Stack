@@ -11,13 +11,20 @@ for cmd in python3 node npm; do
   fi
 done
 
+if [[ ! -d .venv ]]; then
+  python3 -m venv .venv
+fi
+
+.venv/bin/python -m pip install --upgrade pip
+.venv/bin/python -m pip install -e .
+
 if [[ -f package-lock.json ]]; then
   npm ci
 else
   npm install
 fi
 
-python3 -m unittest discover -s tests -v
+.venv/bin/python -m unittest discover -s tests -v
 npm run docs:build
 
 echo

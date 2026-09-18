@@ -1,27 +1,28 @@
 # Plugin and Skill Usage
 
-Engineering Report Stack is packaged as a **skill-first Codex plugin**.
+Engineering Report Stack is packaged as a **skill-first Codex plugin** and a reusable Report-as-Code SDK.
 
 ## Plugin manifest
 
-The repository root contains:
+The repository contains:
 
 ```text
 .codex-plugin/plugin.json
 skills/
+prompts/
 ```
 
-This follows the current OpenAI Codex plugin layout: a plugin manifest plus optional skills.
+The plugin owns report-domain knowledge. Remote Workstation remains the execution/control plane.
 
-## Immediate local use
+## Local Codex use
 
-To install the skills into local Codex discovery:
+Install or refresh the skills:
 
 ```bash
-./scripts/install-codex-skills.sh
+./scripts/install-codex-skills.sh --force
 ```
 
-The installer copies the canonical skill folders into:
+They are copied to:
 
 ```text
 ${CODEX_HOME:-~/.codex}/skills
@@ -29,42 +30,46 @@ ${CODEX_HOME:-~/.codex}/skills
 
 Restart Codex after installation.
 
-Use `--force` only when replacing an existing installed copy is intentional.
+## New ChatGPT conversation
 
-## Primary skill
+Until Engineering Report Stack is installed as a native ChatGPT plugin/app, use:
 
-`engineering-web-report` is the orchestration skill. It enforces:
+```text
+prompts/chatgpt-bootstrap.md
+```
+
+as the bootstrap instruction in a new conversation.
+
+The bootstrap intentionally contains workflow constraints rather than project-specific report content.
+
+## Primary workflow
+
+`engineering-web-report` orchestrates:
 
 ```text
 inspect
+  -> identify canonical source
   -> trace
   -> impact
-  -> modify canonical data
-  -> validate
-  -> generate
+  -> modify canonical data/component
+  -> schema + semantic validation
+  -> generate view model
   -> build
   -> review
 ```
 
-Specialized skills are available for architecture, data modelling, diagrams, citations, evidence, and final review.
+Specialized skills cover architecture, data modelling, diagrams, citations, evidence, and final review.
 
-## Remote Workstation integration
+## Runtime relationship
 
-Remote Workstation remains the execution/control plane. This plugin provides the engineering-report knowledge and workflow.
-
-```text
-Engineering Report Stack
-          |
-          | decides HOW the report should be changed
-          v
-Agent / ChatGPT / Codex
-          |
-          | executes filesystem/git/build/browser tasks
-          v
-Remote Workstation
-          |
-          v
-Report repository
+```mermaid
+flowchart LR
+  ERS[Engineering Report Stack
+rules + skills + SDK] --> A[Agent / ChatGPT / Codex]
+  A --> RW[Remote Workstation
+execution/control]
+  RW --> RP[Report Repository]
+  RP --> ERS
 ```
 
 Do not couple report-domain logic into Remote Workstation itself.

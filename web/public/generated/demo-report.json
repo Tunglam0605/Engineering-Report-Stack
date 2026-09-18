@@ -1,0 +1,144 @@
+{
+  "report": {
+    "id": "RPT-DEMO-001",
+    "name": "Engineering Report Stack Demo",
+    "version": "0.1.0",
+    "description": "Minimal traceable report demonstrating one source-to-evidence engineering chain.",
+    "status": "draft",
+    "renderers": [
+      "vitepress"
+    ]
+  },
+  "summary": {
+    "source": 1,
+    "requirement": 1,
+    "test": 1,
+    "result": 1,
+    "evidence": 1
+  },
+  "entities": [
+    {
+      "id": "EVD-EMC-001",
+      "kind": "evidence",
+      "title": "Demo runtime log",
+      "status": null,
+      "summary": "Illustrative evidence artifact used to verify end-to-end report traceability.",
+      "data": {
+        "id": "EVD-EMC-001",
+        "title": "Demo runtime log",
+        "type": "log",
+        "test_id": "TEST-EMC-001",
+        "result_id": "RES-EMC-001",
+        "file": "evidence/demo-runtime-log.txt",
+        "description": "Illustrative evidence artifact used to verify end-to-end report traceability.",
+        "timestamp": "2026-09-18T08:50:00+07:00"
+      }
+    },
+    {
+      "id": "REQ-EMC-001",
+      "kind": "requirement",
+      "title": "Transient immunity requirement",
+      "status": "proposed",
+      "summary": "The controller shall remain operational during the defined transient-immunity verification scenario.",
+      "data": {
+        "id": "REQ-EMC-001",
+        "title": "Transient immunity requirement",
+        "statement": "The controller shall remain operational during the defined transient-immunity verification scenario.",
+        "status": "proposed",
+        "acceptance": "No reset, unsafe output, or loss of required communication during the test window.",
+        "source_refs": [
+          {
+            "source_id": "STD-DEMO-001",
+            "locator": {
+              "section": "Demo clause",
+              "page": 1,
+              "note": "Illustrative source locator only; replace with an authoritative source in real reports."
+            }
+          }
+        ],
+        "tags": [
+          "emc",
+          "demo"
+        ]
+      }
+    },
+    {
+      "id": "RES-EMC-001",
+      "kind": "result",
+      "title": "Transient-immunity bench result",
+      "status": "pass",
+      "summary": "The demo controller state remained operational and the monitored communication state recovered without manual intervention.",
+      "data": {
+        "id": "RES-EMC-001",
+        "title": "Transient-immunity bench result",
+        "test_id": "TEST-EMC-001",
+        "status": "pass",
+        "summary": "The demo controller state remained operational and the monitored communication state recovered without manual intervention.",
+        "evidence": [
+          "EVD-EMC-001"
+        ],
+        "measured_at": "2026-09-18T08:50:00+07:00"
+      }
+    },
+    {
+      "id": "STD-DEMO-001",
+      "kind": "source",
+      "title": "Demo Engineering Standard",
+      "status": null,
+      "summary": "",
+      "data": {
+        "id": "STD-DEMO-001",
+        "title": "Demo Engineering Standard",
+        "source_type": "standard",
+        "publisher": "Engineering Report Stack",
+        "edition": "1.0",
+        "url": "https://github.com/Tunglam0605/Engineering-Report-Stack"
+      }
+    },
+    {
+      "id": "TEST-EMC-001",
+      "kind": "test",
+      "title": "Controller transient-immunity bench test",
+      "status": "completed",
+      "summary": "Apply the defined disturbance while monitoring controller uptime, outputs, and communication health.",
+      "data": {
+        "id": "TEST-EMC-001",
+        "title": "Controller transient-immunity bench test",
+        "verifies": [
+          "REQ-EMC-001"
+        ],
+        "method": "Apply the defined disturbance while monitoring controller uptime, outputs, and communication health.",
+        "procedure": [
+          "Start the controller and confirm normal operation.",
+          "Begin communication and watchdog monitoring.",
+          "Apply the defined transient test stimulus.",
+          "Record runtime behavior and recovery state."
+        ],
+        "acceptance_criteria": "No reset, unsafe output, or persistent communication loss.",
+        "status": "completed"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "source": "REQ-EMC-001",
+      "target": "TEST-EMC-001",
+      "relation": "verified-by"
+    },
+    {
+      "source": "RES-EMC-001",
+      "target": "EVD-EMC-001",
+      "relation": "supported-by"
+    },
+    {
+      "source": "STD-DEMO-001",
+      "target": "REQ-EMC-001",
+      "relation": "derived-from"
+    },
+    {
+      "source": "TEST-EMC-001",
+      "target": "RES-EMC-001",
+      "relation": "produces-result"
+    }
+  ]
+}

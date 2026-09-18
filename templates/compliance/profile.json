@@ -1,0 +1,21 @@
+{
+  "id": "compliance",
+  "title": "Compliance Report",
+  "description": "Standards-to-requirement compliance and verification report.",
+  "sections": [
+    "Executive Summary",
+    "Scope and Applicable Standards",
+    "System Architecture",
+    "Requirements and Compliance Matrix",
+    "Verification Methods",
+    "Results and Evidence",
+    "Open Gaps and Deviations",
+    "References"
+  ],
+  "emphasis": [
+    "authoritative sources",
+    "clause/page locators",
+    "compliance status",
+    "evidence traceability"
+  ]
+}

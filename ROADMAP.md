@@ -1,6 +1,6 @@
 # Roadmap
 
-## v0.1 — Bootstrap
+## v0.1 — Bootstrap ✅
 
 - Portable Agent Skills.
 - Codex plugin manifest.
@@ -11,14 +11,32 @@
 - Working demo report.
 - Upstream framework catalogue.
 
-## v0.2 — Engineering report SDK
+## v0.2 — Engineering Report SDK ✅
 
-- JSON Schema validation in CI.
-- YAML authoring adapter.
-- Reusable Vue components for requirements, citations, evidence, status and trace graph.
-- Search/filter by entity ID and status.
-- Multiple report templates: compliance, validation, test, project handoff.
-- Unit tests for graph semantics.
+- Core refactored into SRP-oriented Python package:
+  - IO/adapters,
+  - schema validation,
+  - graph semantics,
+  - renderer,
+  - CLI.
+- JSON Schema 2020-12 validation.
+- YAML + JSON canonical authoring.
+- Interactive generated view model.
+- Reusable Vue components:
+  - report summary,
+  - entity explorer,
+  - status badge,
+  - evidence card.
+- Search/filter by entity ID, content, type, and status.
+- Report profiles:
+  - compliance,
+  - validation,
+  - test,
+  - handoff.
+- Cross-platform Python launcher for npm workflows.
+- Python package/CLI installation via `pyproject.toml`.
+- Unit/integration tests for schema, YAML, graph, scaffolding, generation, and skills.
+- CI installs both Python and WebUI dependencies before validation/build.
 
 ## v0.3 — Evidence and citation hardening
 
@@ -27,14 +45,16 @@
 - Source locator validation.
 - Page/clause deep-link metadata.
 - Evidence gallery and provenance viewer.
+- Source/evidence health dashboard.
 - PDF export path.
+- Release/version metadata embedded into report output.
 
 ## v0.4 — Multi-renderer
 
 - Quarto adapter.
 - Observable data-report adapter.
 - Slidev presentation adapter.
-- Shared view-model contract.
+- Shared renderer-neutral view-model contract.
 
 ## v0.5 — Plugin distribution
 

@@ -10,25 +10,23 @@ Minimal traceable report demonstrating one source-to-evidence engineering chain.
 **Report ID:** `RPT-DEMO-001`  
 **Version:** `0.1.0`
 
-## Model summary
+## Report overview
 
-| Entity | Count |
-|---|---:|
-| Source | 1 |
-| Requirement | 1 |
-| Test | 1 |
-| Result | 1 |
-| Evidence | 1 |
+<ReportSummary data-url="./demo-report.json" />
+
+## Explore canonical entities
+
+<EntityExplorer data-url="./demo-report.json" />
 
 ## Traceability graph
 
 ```mermaid
 flowchart LR
-  n0["EVD-EMC-001\nevidence"]
-  n1["REQ-EMC-001\nrequirement"]
-  n2["RES-EMC-001\nresult"]
-  n3["STD-DEMO-001\nsource"]
-  n4["TEST-EMC-001\ntest"]
+  n0["EVD-EMC-001\nevidence\nDemo runtime log"]
+  n1["REQ-EMC-001\nrequirement\nTransient immunity requirement"]
+  n2["RES-EMC-001\nresult\nTransient-immunity bench result"]
+  n3["STD-DEMO-001\nsource\nDemo Engineering Standard"]
+  n4["TEST-EMC-001\ntest\nController transient-immunity bench test"]
   n1 -->|verified-by| n4
   n2 -->|supported-by| n0
   n3 -->|derived-from| n1
@@ -53,30 +51,29 @@ flowchart LR
 |---|---|---|---|---|
 | `TEST-EMC-001` | Controller transient-immunity bench test | `REQ-EMC-001` | completed | No reset, unsafe output, or persistent communication loss. |
 
-## Results and evidence
+## Results
 
 | Result | Test | Status | Summary | Evidence |
 |---|---|---|---|---|
 | `RES-EMC-001` | `TEST-EMC-001` | pass | The demo controller state remained operational and the monitored communication state recovered without manual intervention. | `EVD-EMC-001` |
 
-### Evidence catalogue
+## Evidence catalogue
 
-#### EVD-EMC-001 — Demo runtime log
+<EvidenceCard title="Demo runtime log" evidence-id="EVD-EMC-001" type="log" test-id="TEST-EMC-001" result-id="RES-EMC-001" locator="evidence/demo-runtime-log.txt">
 
-- **Type:** log
-- **Test:** `TEST-EMC-001`
-- **Result:** `RES-EMC-001`
-- **Locator:** `evidence/demo-runtime-log.txt`
-- **Description:** Illustrative evidence artifact used to verify end-to-end report traceability.
+Illustrative evidence artifact used to verify end-to-end report traceability.
 
-## Data flow
+</EvidenceCard>
+
+## Generation flow
 
 ```mermaid
 flowchart LR
-  A[Canonical JSON] --> B[Validate]
-  B --> C[Relationship Graph]
-  C --> D[Generated Markdown]
-  D --> E[VitePress WebUI]
+  A[JSON / YAML canonical data] --> B[JSON Schema]
+  B --> C[Semantic graph validation]
+  C --> D[View model]
+  D --> E[VitePress components]
+  E --> F[Static WebUI]
 ```
 
 > This page is generated. Edit canonical report data, then regenerate.

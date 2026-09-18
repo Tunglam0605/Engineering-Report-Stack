@@ -1,0 +1,22 @@
+{
+  "id": "validation",
+  "title": "Validation Report",
+  "description": "System validation report centered on requirements, tests, measured results, and acceptance evidence.",
+  "sections": [
+    "Validation Scope",
+    "System Under Test",
+    "Acceptance Criteria",
+    "Test Environment",
+    "Validation Procedures",
+    "Results",
+    "Evidence",
+    "Deviations and Retest",
+    "Conclusion"
+  ],
+  "emphasis": [
+    "acceptance criteria",
+    "test environment",
+    "measured results",
+    "repeatability"
+  ]
+}

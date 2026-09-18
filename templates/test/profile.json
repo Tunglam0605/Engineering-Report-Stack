@@ -1,0 +1,22 @@
+{
+  "id": "test",
+  "title": "Engineering Test Report",
+  "description": "Focused test report for a subsystem, interface, performance target, or failure investigation.",
+  "sections": [
+    "Objective",
+    "Setup",
+    "Inputs and Constraints",
+    "Procedure",
+    "Measurements",
+    "Results",
+    "Evidence",
+    "Analysis",
+    "Conclusion"
+  ],
+  "emphasis": [
+    "reproducible setup",
+    "procedure",
+    "measurements",
+    "raw evidence"
+  ]
+}

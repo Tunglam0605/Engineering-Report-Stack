@@ -1,7 +1,7 @@
 {
   "name": "engineering-report-stack",
-  "version": "0.1.0",
-  "description": "Create and maintain traceable engineering WebUI reports using Report-as-Code, deterministic validation, diagrams, citations, evidence, and reusable Agent Skills.",
+  "version": "0.2.0",
+  "description": "Create and maintain traceable engineering WebUI reports using Report-as-Code, canonical JSON/YAML data, JSON Schema validation, diagrams, citations, evidence, interactive exploration, and reusable Agent Skills.",
   "author": {
     "name": "Tunglam0605",
     "url": "https://github.com/Tunglam0605"
@@ -18,19 +18,21 @@
     "evidence",
     "citations",
     "mermaid",
-    "vitepress"
+    "vitepress",
+    "json-schema",
+    "yaml"
   ],
   "skills": "./skills/",
   "interface": {
     "displayName": "Engineering Report Stack",
     "shortDescription": "Build clean, traceable engineering WebUI reports from canonical data",
-    "longDescription": "Use Engineering Report Stack to architect, create, refactor, validate, and review technical WebUI reports with stable IDs, source traceability, evidence, diagrams, impact analysis, reusable components, and deterministic generation.",
+    "longDescription": "Architect, create, migrate, refactor, validate, and review technical WebUI reports with stable IDs, source traceability, evidence, diagrams, impact analysis, JSON Schema validation, reusable components, and deterministic generation.",
     "developerName": "Tunglam0605",
     "category": "Developer Tools",
     "capabilities": ["Read", "Write", "Interactive"],
     "websiteURL": "https://github.com/Tunglam0605/Engineering-Report-Stack",
     "defaultPrompt": [
-      "Create or update this engineering report using canonical data, traceability, diagrams, evidence, and validation. Inspect dependencies before editing."
+      "Create or update this engineering report using canonical data, traceability, diagrams, evidence, schema validation, and generated views. Inspect dependencies before editing."
     ]
   }
 }
