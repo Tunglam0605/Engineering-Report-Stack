@@ -1,0 +1,7 @@
+Engineering Report Stack demo evidence
+test_id=TEST-EMC-001
+result_id=RES-EMC-001
+controller_state=RUNNING
+communication_state=RECOVERED
+reset_detected=false
+unsafe_output_detected=false

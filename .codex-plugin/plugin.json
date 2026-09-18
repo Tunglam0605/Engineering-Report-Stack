@@ -1,0 +1,36 @@
+{
+  "name": "engineering-report-stack",
+  "version": "0.1.0",
+  "description": "Create and maintain traceable engineering WebUI reports using Report-as-Code, deterministic validation, diagrams, citations, evidence, and reusable Agent Skills.",
+  "author": {
+    "name": "Tunglam0605",
+    "url": "https://github.com/Tunglam0605"
+  },
+  "homepage": "https://github.com/Tunglam0605/Engineering-Report-Stack",
+  "repository": "https://github.com/Tunglam0605/Engineering-Report-Stack",
+  "license": "Apache-2.0",
+  "keywords": [
+    "engineering-report",
+    "report-as-code",
+    "web-report",
+    "traceability",
+    "technical-documentation",
+    "evidence",
+    "citations",
+    "mermaid",
+    "vitepress"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Engineering Report Stack",
+    "shortDescription": "Build clean, traceable engineering WebUI reports from canonical data",
+    "longDescription": "Use Engineering Report Stack to architect, create, refactor, validate, and review technical WebUI reports with stable IDs, source traceability, evidence, diagrams, impact analysis, reusable components, and deterministic generation.",
+    "developerName": "Tunglam0605",
+    "category": "Developer Tools",
+    "capabilities": ["Read", "Write", "Interactive"],
+    "websiteURL": "https://github.com/Tunglam0605/Engineering-Report-Stack",
+    "defaultPrompt": [
+      "Create or update this engineering report using canonical data, traceability, diagrams, evidence, and validation. Inspect dependencies before editing."
+    ]
+  }
+}

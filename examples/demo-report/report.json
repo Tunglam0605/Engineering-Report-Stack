@@ -1,0 +1,8 @@
+{
+  "id": "RPT-DEMO-001",
+  "name": "Engineering Report Stack Demo",
+  "version": "0.1.0",
+  "description": "Minimal traceable report demonstrating one source-to-evidence engineering chain.",
+  "status": "draft",
+  "renderers": ["vitepress"]
+}

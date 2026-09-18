@@ -1,0 +1,10 @@
+{
+  "id": "EVD-EMC-001",
+  "title": "Demo runtime log",
+  "type": "log",
+  "test_id": "TEST-EMC-001",
+  "result_id": "RES-EMC-001",
+  "file": "evidence/demo-runtime-log.txt",
+  "description": "Illustrative evidence artifact used to verify end-to-end report traceability.",
+  "timestamp": "2026-09-18T08:50:00+07:00"
+}

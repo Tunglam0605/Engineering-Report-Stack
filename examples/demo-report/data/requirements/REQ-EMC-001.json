@@ -1,0 +1,18 @@
+{
+  "id": "REQ-EMC-001",
+  "title": "Transient immunity requirement",
+  "statement": "The controller shall remain operational during the defined transient-immunity verification scenario.",
+  "status": "proposed",
+  "acceptance": "No reset, unsafe output, or loss of required communication during the test window.",
+  "source_refs": [
+    {
+      "source_id": "STD-DEMO-001",
+      "locator": {
+        "section": "Demo clause",
+        "page": 1,
+        "note": "Illustrative source locator only; replace with an authoritative source in real reports."
+      }
+    }
+  ],
+  "tags": ["emc", "demo"]
+}

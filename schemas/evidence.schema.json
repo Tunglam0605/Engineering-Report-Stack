@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://tunglam0605.github.io/engineering-report-stack/schemas/evidence.schema.json",
+  "title": "Evidence",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "title", "type", "test_id", "description"],
+  "properties": {
+    "id": {"type": "string", "pattern": "^EVD-[A-Z0-9][A-Z0-9-]*$"},
+    "title": {"type": "string", "minLength": 1},
+    "type": {"enum": ["image", "video", "log", "csv", "measurement", "oscilloscope", "document", "other"]},
+    "test_id": {"type": "string", "pattern": "^TEST-"},
+    "result_id": {"type": "string", "pattern": "^RES-"},
+    "file": {"type": "string", "minLength": 1},
+    "url": {"type": "string", "format": "uri"},
+    "description": {"type": "string", "minLength": 1},
+    "timestamp": {"type": "string"},
+    "metadata": {"type": "object", "additionalProperties": true}
+  },
+  "anyOf": [
+    {"required": ["file"]},
+    {"required": ["url"]}
+  ]
+}

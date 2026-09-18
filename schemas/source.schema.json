@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://tunglam0605.github.io/engineering-report-stack/schemas/source.schema.json",
+  "title": "Source",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "title", "source_type"],
+  "properties": {
+    "id": {"type": "string", "pattern": "^(STD|SRC)-[A-Z0-9][A-Z0-9-]*$"},
+    "title": {"type": "string", "minLength": 1},
+    "source_type": {"enum": ["standard", "datasheet", "manual", "paper", "web", "api", "dataset", "other"]},
+    "publisher": {"type": "string"},
+    "edition": {"type": "string"},
+    "url": {"type": "string", "format": "uri"},
+    "retrieved_at": {"type": "string"},
+    "metadata": {"type": "object", "additionalProperties": true}
+  }
+}

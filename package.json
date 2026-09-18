@@ -1,0 +1,23 @@
+{
+  "name": "engineering-report-stack",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Report-as-Code engineering stack with traceability, validation, diagrams, WebUI rendering, and Agent Skills.",
+  "scripts": {
+    "report:check": "python3 tools/report_cli.py validate examples/demo-report",
+    "report:trace": "python3 tools/report_cli.py trace examples/demo-report REQ-EMC-001",
+    "report:impact": "python3 tools/report_cli.py impact examples/demo-report STD-DEMO-001",
+    "report:generate": "python3 tools/report_cli.py generate examples/demo-report web/generated/demo-report.md",
+    "report:new": "python3 tools/new_report.py",
+    "test:py": "python3 -m unittest discover -s tests -v",
+    "docs:dev": "npm run report:generate && vitepress dev web",
+    "docs:build": "npm run report:check && npm run report:generate && vitepress build web",
+    "docs:preview": "vitepress preview web",
+    "test": "npm run test:py && npm run docs:build"
+  },
+  "devDependencies": {
+    "mermaid": "^11.17.2",
+    "vitepress": "1.6.4",
+    "vitepress-plugin-mermaid": "2.0.17"
+  }
+}

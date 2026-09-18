@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://tunglam0605.github.io/engineering-report-stack/schemas/result.schema.json",
+  "title": "Result",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "title", "test_id", "status"],
+  "properties": {
+    "id": {"type": "string", "pattern": "^RES-[A-Z0-9][A-Z0-9-]*$"},
+    "title": {"type": "string", "minLength": 1},
+    "test_id": {"type": "string", "pattern": "^TEST-"},
+    "status": {"enum": ["pass", "fail", "partial", "not-tested"]},
+    "summary": {"type": "string"},
+    "evidence": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {"type": "string", "pattern": "^EVD-"}
+    },
+    "measured_at": {"type": "string"},
+    "metadata": {"type": "object", "additionalProperties": true}
+  }
+}

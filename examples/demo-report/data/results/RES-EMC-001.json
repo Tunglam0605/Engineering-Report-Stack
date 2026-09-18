@@ -1,0 +1,9 @@
+{
+  "id": "RES-EMC-001",
+  "title": "Transient-immunity bench result",
+  "test_id": "TEST-EMC-001",
+  "status": "pass",
+  "summary": "The demo controller state remained operational and the monitored communication state recovered without manual intervention.",
+  "evidence": ["EVD-EMC-001"],
+  "measured_at": "2026-09-18T08:50:00+07:00"
+}

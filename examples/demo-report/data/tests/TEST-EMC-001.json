@@ -1,0 +1,14 @@
+{
+  "id": "TEST-EMC-001",
+  "title": "Controller transient-immunity bench test",
+  "verifies": ["REQ-EMC-001"],
+  "method": "Apply the defined disturbance while monitoring controller uptime, outputs, and communication health.",
+  "procedure": [
+    "Start the controller and confirm normal operation.",
+    "Begin communication and watchdog monitoring.",
+    "Apply the defined transient test stimulus.",
+    "Record runtime behavior and recovery state."
+  ],
+  "acceptance_criteria": "No reset, unsafe output, or persistent communication loss.",
+  "status": "completed"
+}
